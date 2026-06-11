@@ -108,11 +108,10 @@ if st.session_state.pipeline_results:
             st.session_state.topic = ""
             st.rerun()
 
-    # Structure the UI layout without emojis
-    tab1, tab2, tab3 = st.tabs([
+    # Structure the UI layout to only show Report and Sources
+    tab1, tab2 = st.tabs([
         "Strategic Report Draft", 
-        "Senior Partner Evaluation", 
-        "Collected Context Metrics"
+        "Sources & Context"
     ])
     
     with tab1:
@@ -123,13 +122,6 @@ if st.session_state.pipeline_results:
             st.info("The synthesis step completed but returned an empty report frame.")
             
     with tab2:
-        st.subheader("Partner Critique and Feedback Loop")
-        if results.get("feedback"):
-            st.markdown(results["feedback"])
-        else:
-            st.info("The evaluation step completed but returned empty feedback.")
-            
-    with tab3:
         st.subheader("Extracted Grounding Data Context")
         st.caption("Review the truncated raw text injected into downstream context windows.")
         
@@ -150,3 +142,4 @@ if st.session_state.pipeline_results:
                 height=400,
                 label_visibility="collapsed"
             )
+            

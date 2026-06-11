@@ -14,7 +14,7 @@ def web_search(query:str)->str:
     """Searches the web for deep market research, competitor strategies, and financial data. 
     Use this to gather concrete facts, numbers for benchmarking and future projections, and sources for PESTLE, SWOT of competitors and market,Value chain analysis,guestimate expected revenue and market share ,and market sizing."""
     
-    results=tavily.search(query=query,max_results=4,search_depth="basic")
+    results=tavily.search(query=query,max_results=6,search_depth="basic")
     out=[]
     for r in results["results"]:
         out.append( f"Title:{r['title']}\nURL:{r['url']}\nSnippet:{r['content'][:300]}\n"
